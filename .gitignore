@@ -1,0 +1,5 @@
+*.pyc
+*000*
+db.sqlite3
+media/avatars/*
+!media/avatars/AVATAR_DEFAULT.png

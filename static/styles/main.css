@@ -1,0 +1,17 @@
+.mainFooter {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center; 
+    padding: 10px 0; 
+}
+
+.mensajesUsuario {
+    margin: auto;
+    justify-content: center;
+    width: 50%;
+    z-index: 999;
+}

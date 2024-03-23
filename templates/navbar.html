@@ -7,7 +7,7 @@
       <div class="collapse navbar-collapse" id="navbarScroll">
         <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
           <li class="nav-item">
-            <a class="nav-link active text-light" aria-current="page" href="#">Inicio</a>
+            <a class="nav-link active text-light" aria-current="page" href="{% url 'mainPage' %}">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-light" href="#">Equipos</a>
@@ -20,11 +20,11 @@
           </li>
           {% if request.user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link text-light" href="#">Cerrar sesión</a>
+                <a class="nav-link text-light" href="{% url 'logoutPage' %}">Cerrar sesión</a>
             </li>
           {% else %}
             <li class="nav-item">
-                <a class="nav-link text-light" href="#">Iniciar sesión</a>
+                <a class="nav-link text-light" href="{% url 'loginPage' %}">Iniciar sesión</a>
             </li>
           {% endif %}
         </ul>

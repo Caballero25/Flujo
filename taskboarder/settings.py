@@ -58,6 +58,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             BASE_DIR / "templates",
+            BASE_DIR / "user/"
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -130,5 +131,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+#Static 
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
+
 #User
 AUTH_USER_MODEL = 'user.User'
+LOGIN_URL = '/login/'

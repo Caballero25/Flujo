@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+{% load static %}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -13,9 +15,29 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <link rel="stylesheet" href="{% static 'styles/login.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
     <title>Task Boarder By David Caballero</title>
   </head>
   <body>
     {% include 'navbar.html' %}
+    {% if messages %}
+      <div class="mensajesUsuario">
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>Sistema:</strong> {{message}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+      </div>
+        
+    
+    {% endif %}
+    {% block contend %}
+
+      <!--logical content of the program  -->
+
+    {% endblock %}
+    {% include 'footer.html' %}
   </body>
 </html>

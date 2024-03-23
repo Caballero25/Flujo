@@ -12,16 +12,24 @@
             {% csrf_token %}
             <div class="form-field d-flex align-items-center">
                 <span class="far fa-user"></span>
+                <input type="email" name="email" id="email" placeholder="Email" required="true">
+            </div>
+            <div class="form-field d-flex align-items-center">
+                <span class="far fa-user"></span>
                 <input type="text" name="userName" id="userName" placeholder="Username" required="true">
             </div>
             <div class="form-field d-flex align-items-center">
                 <span class="fas fa-key"></span>
                 <input type="password" name="password" id="pwd" placeholder="Password" required="true">
             </div>
-            <button type="submit" class="btn mt-3">LogIn</button>
+            <div class="form-field d-flex align-items-center">
+                <span class="fas fa-key"></span>
+                <input type="password" name="password2" id="pwd2" placeholder="Repeat Password">
+            </div>
+            <button type="submit" class="btn mt-3">SignUp</button>
         </form>
         <div class="text-center fs-6">
-            <small>¿No tienes una cuenta?</small>  <a href="{% url 'signupPage' %}">REGISTRATE</a>
+            <small>¿Ya tienes una cuenta?</small>  <a href="{% url 'loginPage' %}">INGRESA</a>
         </div>
     </div>
 

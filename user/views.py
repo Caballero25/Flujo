@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
+from . import forms
 from .models import User
 # Create your views here.
 
@@ -66,3 +67,18 @@ def signupPage(request):
 def logoutPage(request):
     logout(request)
     return redirect('loginPage')
+
+@login_required
+def EditPerfilPage(request):
+    user = request.user
+    form = forms.UserUpdateForm(instance=user)
+    if request.method == 'POST':
+        form = forms.UserUpdateForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            print(form.data)
+            user = form.save()
+            return redirect('perfilPage')
+        else:
+            messages.error(request, 'Ocurrió un error al editar sus datos')
+    
+    return render(request, 'templates_user/perfil.html', {'form': form, 'user':user})    

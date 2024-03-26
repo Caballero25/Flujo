@@ -12,7 +12,7 @@
     padding: 40px 30px 30px 30px;
     background-color: #ecf0f3;
     border-radius: 15px;
-    box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff;
+    box-shadow: 13px 13px 20px #0c0c0c, -13px -13px 20px #858484;
 }
 
 .logo {
@@ -25,7 +25,7 @@
     height: 80px;
     object-fit: cover;
     border-radius: 50%;
-    box-shadow: 0px 0px 3px #5f5f5f,
+    box-shadow: 0px 0px 3px #414040,
         0px 0px 0px 5px #ecf0f3,
         8px 8px 15px #a7aaa7,
         -8px -8px 15px #fff;
@@ -69,7 +69,7 @@
     background-color: #03A9F4;
     color: #fff;
     border-radius: 25px;
-    box-shadow: 3px 3px 3px #b1b1b1,
+    box-shadow: 3px 3px 3px #968989,
         -3px -3px 3px #fff;
     letter-spacing: 1.3px;
 }
@@ -88,9 +88,70 @@
     color: #039BE5;
 }
 
+.imagenPerfil {
+    width: 100%;
+}
+.changeAvatarUser {
+    max-width: 100%;
+    padding: 0px;
+}
+
+.labelEditUserForm {
+    color: #646363;
+}
+
 @media(max-width: 380px) {
     .wrapper {
         margin: 30px 20px;
         padding: 40px 15px 15px 15px;
+    }
+}
+
+/*Create a new team*/
+.createTeam {
+    margin: 40px auto;
+    max-width: 350px;
+    min-height: 300px; 
+    padding: 10px 30px 10px 30px;
+}
+
+.buttonCreateTeam {
+    margin-bottom: 20px;
+}
+
+.createTeam form small {
+    margin-top: 500px;
+    color: rgba(8, 8, 8, 0.5);
+}
+
+.createNewTeamTitle {
+    margin-top: 20px;
+    text-align: center;
+    color: #f8f9ed
+}
+.teamSeparator {
+    height: 5px;
+    background-color: white;
+}
+
+.myTeamsContainer {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.cardTeam {
+    min-width: 280px;
+    min-height: 190px;
+}
+
+@media(max-width: 924px) {
+    .myTeamsContainer {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-bottom: 30px;
     }
 }

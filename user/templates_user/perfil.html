@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+
+{% block contend %}
+    <div class="wrapper">
+        <div class="logo">
+            <img src="{{ user.avatar.url }}" alt="Team" title="Team">
+        </div>
+        <div class="text-center mt-4 name">
+            {{user.username}} | Miembro desde: {{ user.created_at|date:"d/m/Y" }}
+        </div>
+        <form action=""  method="POST" class="p-3 mt-3" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <label class="labelEditUserForm"> {{form.username.label}}</label>
+            <div class="form-field d-flex align-items-center">
+                <span class="far fa-user"></span>
+                {{form.username}}
+            </div>
+            <label class="labelEditUserForm">  {{form.email.label}}</label>
+            <div class="form-field d-flex align-items-center">
+                <span class="far fa-user"></span>
+                {{form.email}}
+            </div>
+            <label class="labelEditUserForm"> {{form.avatar.label}}</label>
+            <div class="changeAvatarUser">   
+                {{form.avatar}}
+            </div>
+                
+            <button type="submit" class="btn mt-3">Editar</button>
+        </form>
+        <div class="text-center fs-6">
+            <small>Regresar a la</small>  <a href="{% url 'mainPage' %}">PÁGINA PRINCIPAL</a>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.7.2/css/all.css"></script>
+{% endblock contend %}

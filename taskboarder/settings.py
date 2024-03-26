@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'user.apps.UserConfig'
+    'user.apps.UserConfig',
+    'teams.apps.TeamsConfig',
+    'projects.apps.ProjectsConfig',
+    'tasks.apps.TasksConfig',
 ]
 
 MIDDLEWARE = [
@@ -58,7 +61,8 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             BASE_DIR / "templates",
-            BASE_DIR / "user/"
+            BASE_DIR / "user/",
+            BASE_DIR / "teams/"
         ],
         'APP_DIRS': True,
         'OPTIONS': {

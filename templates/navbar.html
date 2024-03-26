@@ -10,13 +10,13 @@
             <a class="nav-link active text-light" aria-current="page" href="{% url 'mainPage' %}">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-light" href="#">Equipos</a>
+            <a class="nav-link text-light" href="{% url 'getTeams' %}">Equipos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-light" href="#">Proyectos</a>
+            <a class="nav-link text-light" href="">Proyectos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-light" href="#">Perfil</a>
+            <a class="nav-link text-light" href="{% url 'perfilPage' %}">Perfil</a>
           </li>
           {% if request.user.is_authenticated %}
             <li class="nav-item">

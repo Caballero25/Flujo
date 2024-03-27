@@ -6,7 +6,7 @@
             <img src="https://i.pinimg.com/564x/21/b2/11/21b211c7ee7802b4a706450322cb7597.jpg" alt="Team" title="Team">
         </div>
         <div class="text-center mt-4 name">
-            Task Boarder
+            Registrarse
         </div>
         <form action=""  method="POST" class="p-3 mt-3">
             {% csrf_token %}
@@ -24,7 +24,7 @@
             </div>
             <div class="form-field d-flex align-items-center">
                 <span class="fas fa-key"></span>
-                <input type="password" name="password2" id="pwd2" placeholder="Repeat Password">
+                <input type="password" name="password2" id="pwd2" placeholder="Repeat Password" required="true">
             </div>
             <button type="submit" class="btn mt-3">SignUp</button>
         </form>
@@ -33,6 +33,5 @@
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://use.fontawesome.com/releases/v5.7.2/css/all.css"></script>
+    
 {% endblock contend %}

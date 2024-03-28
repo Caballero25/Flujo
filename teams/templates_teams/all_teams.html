@@ -1,0 +1,18 @@
+{% extends 'main.html' %} {% block contend %}
+<h2 class="createNewTeamTitle mt-3"><a>Tus equipos</a></h2>
+<div class="container mt-5 mb-5">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+    {% for team in teams %}
+    <a href="{% url 'editTeam' team.id %}" class="text-decoration-none">
+      <div class="card text-bg-light mb-3 cardTeam" style="max-width: 18rem">
+        <div class="card-header">{{team.created_at | date:"Y-m-d H:i"}}</div>
+        <div class="card-body">
+          <h5 class="card-title">{{team.name}}</h5>
+          <p class="card-text">{{team.goal}}</p>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

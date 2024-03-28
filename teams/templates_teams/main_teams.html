@@ -21,7 +21,7 @@
 
 
 <hr class="teamSeparator">
-<h2 class="createNewTeamTitle"><a href="#">Tus equipos</a></h2>
+<h2 class="createNewTeamTitle"><a href="{% url 'allTeams' %}">Tus equipos</a></h2>
 <section class="myTeamsContainer">
     {% for team in teams %}
     <a href="{% url 'editTeam' team.id %}">

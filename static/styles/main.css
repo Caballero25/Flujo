@@ -197,3 +197,7 @@ body {
     color: #6c757d;
     font-weight: bold;
 }
+
+.allTeamsContainer {
+    padding-left: 5%;
+}

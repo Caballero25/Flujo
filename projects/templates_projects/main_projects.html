@@ -1,0 +1,55 @@
+{% extends 'main.html' %}
+
+{% block contend %}
+
+<h2 class="createNewTeamTitle">Crear nuevo proyecto</h2>
+<div class="wrapper createTeam">
+    <form action=""  method="POST" class="p-3 mt-3">
+        {% csrf_token %}
+        <div class="form-field d-flex align-items-center">
+            <span class="far fa-user"></span>
+            <input type="text" name="projectName" id="projectName" placeholder="Nombre del proyecto" required>
+        </div>
+        <div class="form-field d-flex align-items-center">
+            <span class="far fa-user"></span>
+            <input type="text" name="projectGoal" id="projectGoal" placeholder="Propósito del proyecto" required>
+        </div>
+        <label class="col-md-12 input-group-text" for="inputGroupSelect01">Equipo encargado</label>
+        <div class="input-group mb-1 mt-2 col-md-4 px-0">
+            <select class="col-md-4 form-select" id="inputGroupSelect01" name="projectTeam" required>
+              {% for team in teams %}
+              <option value="{{team.id}}">{{team.short_name}}</option>
+              {% endfor %}
+            </select>
+          </div>
+        <button type="submit" class="btn mt-3 buttonCreateTeam">Crear</button>
+        <small>Podrá agregar integrantes posterior a su creación.</small>
+    </form>
+</div>
+
+
+<hr class="teamSeparator">
+<h2 class="createNewTeamTitle"><a href="{% url 'allProjects' %}">Tus proyectos</a></h2>
+<section class="myTeamsContainer mb-5">
+    {% for project in projects %}
+    <a href="{% url 'editProject' project.id %}">
+        <div class="card text-bg-light mb-3 cardTeam" style="max-width: 18rem;">
+            <div class="allprojectsImageContainer">
+                <img
+                src="{{project.image.url}}"
+                width="100"
+                class="rounded-circle allprojectsImage"
+              />
+          <div class="card-header">{{project.created_at | date:"Y-m-d H:i"}}</div>
+            </div>
+                
+            <div class="card-body">
+              <h5 class="card-title">{{project.name}}</h5>
+              <p class="card-text">{{project.team.name}}</p>
+            </div>
+          </div>
+    </a>
+      {% endfor %}
+</section>
+
+{% endblock contend %}

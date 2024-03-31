@@ -3,6 +3,10 @@ body {
     background: radial-gradient(circle, rgba(43,43,43,1) 0%, rgba(10,43,30,1) 24%, rgba(99,99,99,1) 100%);
 }
 
+.notextdecoration {
+    text-decoration: none;
+}
+
 .mainFooter {
     position: fixed;
     left: 0;
@@ -200,4 +204,22 @@ body {
 
 .allTeamsContainer {
     padding-left: 5%;
+}
+
+.projectImage {
+    box-shadow: 1px 5px 3px #198754;
+}
+
+.allprojectsImageContainer {
+    margin-top: 5px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.allprojectsImage {
+    width: 60px;
+    height: 60px;
+    box-shadow: 1px 5px 3px #198754;
 }

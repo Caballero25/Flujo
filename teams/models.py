@@ -5,7 +5,7 @@ from user.models import User
 
 
 class Team(models.Model):
-    leader = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name="lider")
+    leader = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name="teamleader")
     members = models.ManyToManyField(User)
     name = models.CharField(max_length=100, blank=False, null=False)
     goal = models.TextField(max_length=200, blank=False, null=False)
@@ -15,3 +15,5 @@ class Team(models.Model):
     
     def __str__(self):
         return self.name + " | " + self.goal[0:10]  
+    class Meta:
+        ordering = ['-created_at']      

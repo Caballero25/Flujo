@@ -8,11 +8,11 @@
         {% csrf_token %}
         <div class="form-field d-flex align-items-center">
             <span class="far fa-user"></span>
-            <input type="text" name="teamName" id="teamName" placeholder="Nombre de equipo" >
+            <input type="text" name="teamName" id="teamName" placeholder="Nombre de equipo" required>
         </div>
         <div class="form-field d-flex align-items-center">
             <span class="far fa-user"></span>
-            <input type="text" name="teamGoal" id="teamGoal" placeholder="Propósito de equipo" >
+            <input type="text" name="teamGoal" id="teamGoal" placeholder="Propósito de equipo" required>
         </div>
         <button type="submit" class="btn mt-3 buttonCreateTeam">Crear</button>
         <small>Podrá agregar integrantes posterior a su creación.</small>

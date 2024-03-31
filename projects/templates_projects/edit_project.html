@@ -1,0 +1,139 @@
+{% extends 'main.html' %} {% block contend %}
+{% if project.leader != request.user %}
+<div class="container mt-5">
+  <div class="alert alert-primary alert-dismissible fade show" role="alert">
+    <strong>Hey {{request.user.username}}!</strong> no tienes permisos de edición.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  <div class="row d-flex justify-content-center pe-none">
+    <div class="col-md-6">
+      <div class="card p-3 py-4">
+        <div class="text-center">
+          <img
+            src="{{project.image.url}}"
+            width="100"
+            class="rounded-circle projectImage"
+          />
+        </div>
+      
+        <div class="mt-3 editTeamFormDataContainer">
+          <div class="spansEditTeam text-center">
+            <span class="bg-secondary p-1 px-4 rounded text-white">Última edición: {{project.updated_at | date:"Y-m-d H:i"}}</span>
+            <span>Equipo: {{teamName}}</span>
+          </div>
+          
+          
+          <div class="px-4 mt-1">
+            <label>Nombre del proyecto</label>
+            <div class="col-md-12">
+              <input class="form-control" type="text" value="{{project.name}}" required>
+            </div>
+          </div>
+
+          
+          <div class="px-4 mt-1">
+            <label>Meta del proyecto</label>
+            <div class="col-md-12">
+              <input class="form-control" type="text" value="{{project.goal}}" required>
+            </div>
+          </div>
+          <div class="input-group mb-1 col-md-4 px-4">
+            <label class="col-md-4 input-group-text" for="inputGroupSelect01">Equipo encargado</label>
+            <select class="col-md-4 form-select" id="inputGroupSelect01" name="projectTeam">
+              <option>{{project.team.name}}</option>
+            </select>
+          </div>
+          <div class="input-group mb-1 col-md-4 px-4">
+            <label class="col-md-4 input-group-text" for="inputGroupSelect02">Equipo activo</label>
+            <select class="col-md-4 form-select" id="inputGroupSelect01" name="projectActivity">
+              <option value="{{opcion1.bool}}">Actualmente {{opcion1.string}}</option>
+            </select>
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+{% else %}
+<!--Edit team info-->
+<form action="" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-6">
+        <div class="card p-3 py-4">
+          <div class="text-center">
+            <img
+              src="{{project.image.url}}"
+              width="100"
+              class="rounded-circle projectImage"
+            />
+          </div>
+        
+          <div class="mt-3 editTeamFormDataContainer">
+            <div class="spansEditTeam text-center">
+              <span class="bg-secondary p-1 px-4 rounded text-white">Última edición: {{project.updated_at | date:"Y-m-d H:i"}}</span>
+              <span>Equipo: {{teamName}}</span>
+            </div>
+            
+            
+            <div class="px-4 mt-1">
+              <label>Nombre del proyecto</label>
+              <div class="col-md-12">
+                <input class="form-control" type="text" name="projectName" value="{{project.name}}" required>
+              </div>
+            </div>
+  
+            
+            <div class="px-4 mt-1">
+              <label>Meta del proyecto</label>
+              <div class="col-md-12">
+                <input class="form-control" type="text" name="projectGoal" value="{{project.goal}}" required>
+              </div>
+            </div>
+            <div class="px-4 mt-1">
+              <label>Imagen del proyecto</label>
+              <div class="col-md-12">
+                <input class="form-control" type="file" accept="image/*" name="projectImage">
+              </div>
+            </div>
+            <div class="input-group mb-1 col-md-4 px-4">
+              <label class="col-md-4 input-group-text" for="inputGroupSelect01">Equipo encargado</label>
+              <select class="col-md-4 form-select" id="inputGroupSelect01" name="projectTeam">
+                <option value="{{project.team.id}}">{{project.team.name}}</option>
+                {% for team in teams %}
+                <option value="{{team.id}}">{{team.short_name}}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="input-group mb-1 col-md-4 px-4">
+              <label class="col-md-4 input-group-text" for="inputGroupSelect02">Equipo activo</label>
+              <select class="col-md-4 form-select" id="inputGroupSelect01" name="projectActivity">
+                <option value="{{opcion1.bool}}">Actualmente {{opcion1.string}}</option>
+                <option value="{{opcion2.bool}}">Marcar {{opcion2.string}}</option>
+              </select>
+            </div>
+  
+            <div class="text-center" class="buttons">
+              <input type="submit" class="btn btn-outline-primary px-4 mt-3" value="Editar equipo"></input>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+{% endif %}
+
+{% endblock %}
+

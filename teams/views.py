@@ -1,6 +1,6 @@
 from django.contrib import messages
+from django.db.models import Q
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from user.models import User
 from .models import Team
@@ -20,6 +20,7 @@ def getTeams(request):
             try:
                 newTeam = Team.objects.create(leader=request.user, name=teamName, goal=teamGoal) 
                 newTeam.save()
+                messages.success(request, 'Equipo creado con éxito')
                 return redirect("getTeams")
             except:
                 messages.error(request, 'Algo salió mal')
@@ -33,9 +34,10 @@ def editTeam(request, pk):
         searchTeam = Team.objects.get(id=pk)
     except:
         return redirect("getTeams")
-    if searchTeam.leader != request.user:
-        return redirect("getTeams")
     if request.method == 'POST':
+        if searchTeam.leader != request.user:
+            messages.error(request, 'Acceso denegado')
+            return redirect("getTeams")
         getTeamName = request.POST.get("teamName")
         getTeamGoal = request.POST.get("teamGoal")
         getActivity = request.POST.get("teamActivity")
@@ -104,10 +106,7 @@ def addTeamMember(request, pk):
     
 @login_required
 def allTeams(request):
-    #try:
-    teams = Team.objects.filter(leader=request.user).all().order_by('-created_at')
-    #except:
-        #teams = {}
-    
+    teams = Team.objects.filter(Q(members=request.user) | Q(leader=request.user))
     context = {"teams": teams}
+    
     return render(request, "templates_teams/all_teams.html", context)

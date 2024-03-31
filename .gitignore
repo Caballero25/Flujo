@@ -3,3 +3,5 @@
 db.sqlite3
 media/avatars/*
 !media/avatars/AVATAR_DEFAULT.png
+media/projects/*
+!media/projects/PROJECT_DEFAULT.jpg

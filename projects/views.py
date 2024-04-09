@@ -3,7 +3,6 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.db.models.functions import Substr
 from django.db.models import Q
-from user.models import User
 from teams.models import Team
 from .models import Project
 

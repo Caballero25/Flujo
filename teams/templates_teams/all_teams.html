@@ -10,6 +10,11 @@
               <div class="card-body">
                 <h5 class="card-title">{{team.name}}</h5>
                 <p class="card-text">{{team.goal}}</p>
+                {% if team.is_active == True %}
+                                <small>Activo</small>
+                                {% else %}
+                                <small>Inactivo</small>
+                            {% endif %}
               </div>
             </div>
           </a>

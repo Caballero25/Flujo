@@ -1,0 +1,95 @@
+{% extends 'main.html' %}
+{% block contend %}
+<div class="container">
+    <div class="row">
+        <div class="col-4 card mt-5 border-5 pt-2 active pb-0 px-3">
+            <h2 class="text-center">
+                <p class="text-primary">Mis Tareas</p>
+              </h2>
+            <ul class="list-group">
+                {% for task in tasks %}
+                <a class="mb-3" href="{% url 'taskInfo' task.id %}"><li class="list-group-item">{{task.name}}</li></a>
+                {% endfor %}
+              </ul>
+        </div>
+        <div class="container col-8">
+            <div class="container">
+                <div class="card mt-5 border-5 pt-2 active pb-0 px-3">
+                    <h2 class="text-center">
+                        <a href="{% url 'allTeams' %}">Mis Equipos</a>
+                      </h2>
+                    <div class="container">
+                        <section class="allTeamsContainer">
+                            <div class="mt-5 mb-5">
+                                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+                                    {% for team in teams %}
+                                    <a class="w-50" href="{% url 'editTeam' team.id %}">
+                                      <div class="card text-bg-light mb-3 cardTeam" style="max-width: 18rem">
+                                        <div class="allprojectsImageContainer">
+                                          <div class="card-header">Creado el: {{team.created_at | date:"Y-m-d H:i"}}</div>
+                                        </div>
+                                  
+                                        <div class="card-body">
+                                          <h5 class="card-title">{{team.name}}</h5>
+                                          <p class="card-text">{{team.goal}}</p>
+                                          {% if team.is_active == True %}
+                                            <small>Activo</small>
+                                            {% else %}
+                                            <small>Inactivo</small>
+                                        {% endif %}
+                                        </div>
+                                      </div>
+                                    </a>
+                                    {% endfor %}
+                                </div>
+                              </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            <div class="container">
+                <div class="card mt-5 border-5 pt-2 active pb-0 px-3">
+                    <h2 class="text-center">
+                        <a href="{% url 'allProjects' %}">Mis Proyectos</a>
+                      </h2>
+                    <div class="container">
+                        <section class="allTeamsContainer">
+                            <div class="mt-5 mb-5">
+                                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+                                    {% for project in projects %}
+                                        <a class="w-50" href="{% url 'editProject' project.id %}" class="notextdecoration">
+                                            <div class="card text-bg-light mb-3 cardTeam" style="max-width: 18rem;">
+                                                <div class="allprojectsImageContainer">
+                                                    <img
+                                                    src="{{project.image.url}}"
+                                                    width="100"
+                                                    class="rounded-circle allprojectsImage"
+                                                />
+                                            <div class="card-header">{{project.created_at | date:"Y-m-d H:i"}}</div>
+                                                </div>
+                                                    
+                                                <div class="card-body">
+                                                <h5 class="card-title">{{project.name}}</h5>
+                                                <p class="card-text">{{project.team.name}}</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                              </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</div>
+
+
+
+{% endblock %}

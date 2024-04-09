@@ -2,13 +2,22 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
+from django.db.models import Q
 from . import forms
 from .models import User
+from projects.models import Project
+from tasks.models import Task
+from teams.models import Team
 # Create your views here.
 
 @login_required
 def mainPage(request):
-    return render(request, "main.html")
+    allmyteams = Team.objects.filter(Q(leader=request.user) | Q(members=request.user)).all()
+    myteams = Team.objects.filter(Q(leader=request.user) | Q(members=request.user))[:2]
+    myprojects = Project.objects.filter(team__in=allmyteams).order_by("-created_at")[:2]
+    mytasks = Task.objects.filter(owner=request.user).order_by("-created_at")
+    context = {"teams": myteams, "projects": myprojects, "tasks": mytasks}
+    return render(request, "index.html", context)
 
 
 def loginPage(request):

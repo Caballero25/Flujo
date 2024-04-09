@@ -1,0 +1,64 @@
+{% extends 'main.html' %} {% block contend %}
+
+<div class="container">
+  <div class="card mt-5 border-5 pt-2 active pb-0 px-3">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12">
+          <h4 class="card-title"><b>{{task.name}}</b></h4>
+        </div>
+        <div class="col">
+          <h6 class="card-subtitle mb-2 text-muted">
+            <p class="card-text text-muted small">
+              Creada por
+              <span class="font-weight-bold">{{task.project.leader}}</span> el {{task.created_at}}
+            </p>
+            <p class="card-text text-muted small">
+              Encargado:
+              <span class="font-weight-bold">{{task.owner.username}} - {{task.owner.email}}</span>
+            </p>
+          </h6>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-footer bg-white px-0 px-3">
+      <p>
+        {{task.goal}}
+      </p>
+    </div>
+  </div>
+  <div class="card mt-5 border-5 pt-2 active">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="input-group px-3">
+                <span class="input-group-text">Hacer comentario</span>
+                <textarea class="form-control" aria-label="With textarea" name="comentario" required></textarea> 
+                <input type="submit" class="btn btn-success" value="Comentar"></input>   
+        </div>
+    </form>
+    <hr>
+    <div class="card mt-0 border-1 active pb-0 px-3">
+        {% for comment in comments %}
+        <div class="card-body">
+            <div class="row">
+              <div class="col-12">
+                <h4 class="card-title"><b>{{comment.owner.username}} - {{comment.owner.email}}</b></h4>
+              </div>
+              <div class="col">
+                <h6 class="card-subtitle mb-2 text-muted">
+                  
+                  <p class="card-text text-muted small">
+                    <span class="font-weight-bold">{{comment.comment}}</span>
+                  </p>
+                </h6>
+              </div>
+            </div>
+            <hr>
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

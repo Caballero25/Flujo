@@ -64,6 +64,7 @@ TEMPLATES = [
             BASE_DIR / "user/",
             BASE_DIR / "teams/",
             BASE_DIR / "projects/",
+            BASE_DIR / "tasks/",
         ],
         'APP_DIRS': True,
         'OPTIONS': {

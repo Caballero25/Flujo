@@ -1,0 +1,30 @@
+{% extends 'main.html' %} {% block contend %}
+<h2 class="createNewTeamTitle mt-3"><a>Tus tareas</a></h2>
+<section class="allTeamsContainer">
+    <div class="container mt-5 mb-5">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+            {% for task in tasks %}
+            <a href="{% url 'taskInfo' task.id %}">
+              <div class="card text-bg-light mb-3 cardTeam" style="max-width: 18rem">
+                <div class="allprojectsImageContainer">
+                  <img
+                    src="{{project.image.url}}"
+                    width="100"
+                    class="rounded-circle allprojectsImage"
+                  />
+                  <div class="card-header">{{task.created_at | date:"Y-m-d H:i"}}</div>
+                </div>
+          
+                <div class="card-body">
+                  <h5 class="card-title">{{task.name}}</h5>
+                  <p class="card-text">{{task.team.name}}</p>
+                  <small>{{task.owner.email}}</small>
+                </div>
+              </div>
+            </a>
+            {% endfor %}
+        </div>
+      </div>
+</section>
+
+{% endblock %}

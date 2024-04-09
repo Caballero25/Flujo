@@ -41,14 +41,21 @@
     <div class="card mt-0 border-1 active pb-0 px-3">
         {% for comment in comments %}
         <div class="card-body">
-            <div class="row">
-              <div class="col-12">
-                <h4 class="card-title"><b>{{comment.owner.username}} - {{comment.owner.email}}</b></h4>
+            <div class="container">
+              
+              <div class="row">
+                <div class="col-1">
+                  <img
+                  src="{{comment.owner.avatar.url}}"
+                  width="100"
+                  class="rounded-circle allprojectsImage"
+                />
+                </div>
+                <h4 class="card-title col-11"><b>{{comment.owner.username}} - {{comment.owner.email}}</b></h4>
               </div>
-              <div class="col">
-                <h6 class="card-subtitle mb-2 text-muted">
-                  
-                  <p class="card-text text-muted small">
+              <div class="ms-4 px-2">
+                <h6 class="card-subtitle mb-2 ms-5 text-muted">
+                  <p class="card-text text-muted small ms-4">
                     <span class="font-weight-bold">{{comment.comment}}</span>
                   </p>
                 </h6>

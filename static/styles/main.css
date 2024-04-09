@@ -227,3 +227,7 @@ a {
     height: 60px;
     box-shadow: 1px 5px 3px #198754;
 }
+
+.commentUserAvatar {
+    width: 20%;
+}
